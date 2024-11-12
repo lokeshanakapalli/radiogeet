@@ -36,7 +36,7 @@ import { saveMqttData } from "./controllers/mqttDataController.js";
 
 // Initialize Express app
 const app = express();
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 3000;
 
 // Handle ES module __dirname equivalent
 const __dirname = path.resolve();
@@ -52,7 +52,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://iiot.radiogeet.com",
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
@@ -95,7 +95,7 @@ app.use((err, req, res, next) => {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://iiot.radiogeet.com",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
